@@ -1,14 +1,15 @@
-<%@page import="java.text.SimpleDateFormat"%>
-<%@page import="java.util.HashSet"%>
-<%@page import="model.ContaComum"%>
-<%@page import="java.util.Set"%>
-<%@page import="java.util.Locale"%>
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 
-<%@page import="model.Pessoa"%>
-<%@ page import="java.util.Date"%>
 <%@ page import="java.text.NumberFormat"%>
+<%@page import="java.text.SimpleDateFormat"%>
+
+<%@ page import="java.util.Date"%>
+<%@page import="java.util.HashSet"%>
+<%@page import="java.util.Locale"%>
+<%@page import="java.util.Set"%>
+
+<%@page import="model.ContaComum"%>
+<%@page import="model.Pessoa"%>
 
 <!-- Controle simples para evitar acesso direto à página JSP pela URL. -->
 <%
@@ -47,7 +48,8 @@ if (p != null)
 	classDivVisualizacao = "";
 	classDivMensagem = "div-oculta";
 	chkAtivoStatus = (p.getSituacaoPessoa() == 1) ? "Ativo" : "Inativo";
-} else
+}
+else
 {
 	p = new Pessoa("", "", 0l, "", "", 0.0, 0, "");
 }
@@ -173,7 +175,7 @@ if (p != null)
 					<div class="col-xl-12">
 						<!-- Tabelas Bootstrap -->
 						<!-- https://getbootstrap.com/docs/4.6/content/tables/ -->
-						<table class="table table-striped">
+						<table class="table table-dark table-striped">
 							<thead>
 								<tr>
 									<th scope="col">Número</th>

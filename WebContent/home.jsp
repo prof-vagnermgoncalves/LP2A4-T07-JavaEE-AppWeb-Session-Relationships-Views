@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 
 <!-- Controle simples para evitar acesso direto à página JSP pela URL. -->
 <%
@@ -19,7 +18,7 @@ if(mensagemAlerta == null) {
 	classeDivAlerta = "div-oculta";
 }
 %>
-	
+
 <!-- Bootstrap Alerts -->
 <!-- https://getbootstrap.com/docs/4.6/components/alerts/ -->
 <div class="alert alert-primary alert-dismissible fade show <%= classeDivAlerta %>" role="alert">

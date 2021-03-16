@@ -2,7 +2,6 @@ package controller.contacomum;
 
 import java.io.IOException;
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -49,12 +48,14 @@ public class CadastrarContaComumServlet extends HttpServlet
 		
 		if ("OK".equals(session.getAttribute("usuarioAutenticado")))
 		{
-			Set<Pessoa> pessoas = PessoaRepository.recuperarPessoas();
+			// Recuperar os objetos do tipo Pessoa com situação = 1 (Cadastro ativo).
+			Set<Pessoa> pessoas = PessoaRepository.recuperarPessoasPorStatus(1);
 			
 			request.setAttribute("pessoasCadastradas", pessoas);
 			request.setAttribute("tituloPagina", "Cadastrar Nova Conta");
 			request.setAttribute("pathPagina", "/contacomum/cadastrar.jsp");
-		} else
+		}
+		else
 		{
 			request.setAttribute("tituloPagina", "Acesso Negado!");
 			request.setAttribute("pathPagina", "/unauthorized.jsp");
@@ -136,7 +137,8 @@ public class CadastrarContaComumServlet extends HttpServlet
 				request.setAttribute("tituloPagina", "Cadastro de Contas");
 				request.setAttribute("pathPagina", "/contacomum/listar.jsp");
 				request.setAttribute("mensagemAlerta", "Conta cadastrada com sucesso!");
-			} catch (Exception e)
+			}
+			catch (Exception e)
 			{
 				System.out.println("Erro ao tentar cadastrar a nova conta.");
 				System.out.println(e.getMessage());
@@ -147,7 +149,8 @@ public class CadastrarContaComumServlet extends HttpServlet
 					System.out.println(ste.toString());
 				}
 			}
-		} else
+		}
+		else
 		{
 			request.setAttribute("tituloPagina", "Acesso Negado!");
 			request.setAttribute("pathPagina", "/unauthorized.jsp");
@@ -159,5 +162,4 @@ public class CadastrarContaComumServlet extends HttpServlet
 		
 		rd.forward(request, response);
 	}
-	
 }

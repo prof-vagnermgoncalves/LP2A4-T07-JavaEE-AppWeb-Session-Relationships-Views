@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 
 <%@page import="model.Pessoa"%>
 
@@ -46,16 +45,16 @@ if (p != null)
 		<div class="col-xl-12">
 			<!-- Bootstrap Form Components -->
 			<!-- https://getbootstrap.com/docs/4.6/components/forms/ -->
-			<form action="${pageContext.request.contextPath}/pessoa/excluir"
-				method="POST">
+			<form action="${pageContext.request.contextPath}/pessoa/excluir" method="POST">
 				<div class="form-group">
 					<input type="hidden" name="numIdPessoa" id="numIdPessoa"
 						value="<%= idPessoa %>">
 				</div>
 				<div class="form-group">
 					<input type="submit" class="btn btn-danger" name="btnEnviar"
-						value="Excluir"> <input class="btn btn-secondary"
-						type="button" name="btnCancelar" value="Cancelar"
+						value="Excluir">
+					<input class="btn btn-secondary" type="button" name="btnCancelar"
+						value="Cancelar"
 						onclick='document.location.href="${pageContext.request.contextPath}/pessoa"'>
 				</div>
 			</form>

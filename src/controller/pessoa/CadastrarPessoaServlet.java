@@ -98,6 +98,5 @@ public class CadastrarPessoaServlet extends HttpServlet
 		RequestDispatcher rd = request.getRequestDispatcher("/template.jsp");
 		
 		rd.forward(request, response);
-	}
-	
+	}	
 }

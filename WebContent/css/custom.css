@@ -57,6 +57,10 @@ table.dataTable thead .sorting:after, table.dataTable thead .sorting:before,
 	text-align: center;
 }
 
+.profile-email {
+	text-decoration: underline;
+}
+
 .profile-name {
 	font-weight: bolder;
 	font-size: 22px;

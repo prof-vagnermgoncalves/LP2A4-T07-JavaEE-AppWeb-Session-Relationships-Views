@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 
-<%@page import="model.Pessoa"%>
 <%@page import="java.util.HashSet"%>
 <%@page import="java.util.Set"%>
+
+<%@page import="model.Pessoa"%>
 
 <!-- Controle simples para evitar acesso direto à página JSP pela URL. -->
 <%
@@ -16,6 +16,10 @@ if(doServidor == null || !doServidor)
 <!-- Atribuições e validações iniciais. -->
 <%
 Set<Pessoa> pessoas = new HashSet<Pessoa>();
+
+if(request.getAttribute("pessoasCadastradas") != null)
+	pessoas = (Set<Pessoa>) request.getAttribute("pessoasCadastradas");
+
 String mensagemAlerta, classeDivAlerta = "";
 mensagemAlerta = (String) request.getAttribute("mensagemAlerta");
 
@@ -63,7 +67,6 @@ if(mensagemAlerta == null) {
 	<div class="row mt-3">
 		<div class="col-xl-12">
 			<!-- https://mdbootstrap.com/docs/b4/jquery/tables/search/ -->
-
 			<table id="dtPessoas"
 				class="table table-striped table-bordered table-sm" cellspacing="0"
 				width="100%">
@@ -80,12 +83,8 @@ if(mensagemAlerta == null) {
 				</thead>
 				<tbody>
 					<%
-					if(request.getAttribute("pessoasCadastradas") != null)
-							pessoas = (Set<Pessoa>) request.getAttribute("pessoasCadastradas");
-
 					for (Pessoa p : pessoas)
 					{
-						
 						out.println("<tr>"); // Linha
 						
 						out.println("<td>" + p.getIdPessoa() + "</td>");
@@ -125,7 +124,6 @@ if(mensagemAlerta == null) {
 						out.println("</td>");
 						
 						out.println("</tr>"); // Fim Linha
-						
 					}
 					%>
 				</tbody>

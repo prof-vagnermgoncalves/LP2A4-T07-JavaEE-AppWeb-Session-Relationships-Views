@@ -1,6 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
-	
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+
 <%@page import="model.Pessoa"%>
 
 <!-- Verificação do status de autenticação do usuário. -->
@@ -9,7 +8,8 @@ boolean auth = false;
 Pessoa p = new Pessoa();
 String idPessoa = "#", visibilidadeAuth = "elemOculto", visibilidadeUnauth = "";
 
-if ("OK".equals(session.getAttribute("usuarioAutenticado"))) {
+if ("OK".equals(session.getAttribute("usuarioAutenticado")))
+{
 	auth = true;
 	p = (Pessoa)session.getAttribute("pessoa");
 	idPessoa = Integer.toString(p.getIdPessoa());
@@ -27,8 +27,7 @@ if ("OK".equals(session.getAttribute("usuarioAutenticado"))) {
 
 <!-- Required meta tags for Bootstrap -->
 <meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <title><%=(String) request.getAttribute("tituloPagina")%></title>
 
@@ -70,25 +69,39 @@ if ("OK".equals(session.getAttribute("usuarioAutenticado"))) {
 
 		<div class="collapse navbar-collapse" id="navbarsExampleDefault">
 			<ul class="navbar-nav mr-auto">
-				<li class="<%= visibilidadeAuth %> nav-item"><a class="nav-link"
-					href="${pageContext.request.contextPath}/pessoa/ver?idpessoa=<%= idPessoa %>">
-					Bem-vindo <%= p.getNomePessoa() %>! <span
-						class="sr-only">(current)</span>
-				</a></li>
-				<li class="nav-item active"><a class="nav-link"
-					href="${pageContext.request.contextPath}/index">Início <span
-						class="sr-only">(current)</span>
-				</a></li>
-				<li class="<%= visibilidadeAuth %> nav-item"><a class="nav-link"
-					href="${pageContext.request.contextPath}/pessoa/listar">Pessoas</a></li>
-				<li class="<%= visibilidadeAuth %> nav-item"><a class="nav-link"
-					href="${pageContext.request.contextPath}/contacomum/listar">Contas</a></li>
-				<li class="<%= visibilidadeAuth %> nav-item"><a class="nav-link disabled" href="#"
-					tabindex="-1" aria-disabled="true">Movimentos</a></li>
-				<li class="<%= visibilidadeUnauth %> nav-item"><a class="nav-link"
-					href="${pageContext.request.contextPath}/login">Entrar</a></li>
-				<li class="<%= visibilidadeAuth %> nav-item"><a class="nav-link"
-					href="${pageContext.request.contextPath}/logout">Sair</a></li>
+				<li class="<%= visibilidadeAuth %> nav-item">
+					<a class="nav-link"
+						href="${pageContext.request.contextPath}/pessoa/ver?idpessoa=<%= idPessoa %>">
+						Bem-vindo <%= p.getNomePessoa() %>!
+						<span class="sr-only">(current)</span>
+					</a>
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link"
+						href="${pageContext.request.contextPath}/index">Início
+						<span class="sr-only">(current)</span>
+					</a>
+				</li>
+				<li class="<%= visibilidadeAuth %> nav-item">
+					<a class="nav-link"
+						href="${pageContext.request.contextPath}/pessoa/listar">Pessoas</a>
+				</li>
+				<li class="<%= visibilidadeAuth %> nav-item">
+					<a class="nav-link"
+						href="${pageContext.request.contextPath}/contacomum/listar">Contas</a>
+				</li>
+				<li class="<%= visibilidadeAuth %> nav-item">
+					<a class="nav-link disabled" href="#"
+						tabindex="-1" aria-disabled="true">Movimentos</a>
+				</li>
+				<li class="<%= visibilidadeUnauth %> nav-item">
+					<a class="nav-link"
+						href="${pageContext.request.contextPath}/login">Entrar</a>
+				</li>
+				<li class="<%= visibilidadeAuth %> nav-item">
+					<a class="nav-link"
+						href="${pageContext.request.contextPath}/logout">Sair</a>
+				</li>
 			</ul>
 			<form class="form-inline my-2 my-lg-0">
 				<input class="form-control mr-sm-2" type="text" placeholder="Search"
@@ -97,7 +110,7 @@ if ("OK".equals(session.getAttribute("usuarioAutenticado"))) {
 			</form>
 		</div>
 	</nav>
-
+	
 	<main role="main" class="container">
 		<div class="container-template">
 			<h1><%=(String) request.getAttribute("tituloPagina")%></h1>
@@ -110,12 +123,12 @@ if ("OK".equals(session.getAttribute("usuarioAutenticado"))) {
 			}
 			%>
 		</div>
-
-
+		
 		<%
 		String pathPagina = (String) request.getAttribute("pathPagina");
 		%>
-
+		
+		<%-- Carregamento do conteúdo da view. --%>
 		<jsp:include page="${pathPagina}" />
 	</main>
 

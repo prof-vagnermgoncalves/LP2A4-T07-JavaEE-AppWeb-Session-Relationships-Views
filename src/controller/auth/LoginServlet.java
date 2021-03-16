@@ -41,7 +41,7 @@ public class LoginServlet extends HttpServlet
 		
 		if ("OK".equals(session.getAttribute("usuarioAutenticado")))
 		{
-			Pessoa p = (Pessoa)session.getAttribute("pessoa");
+			Pessoa p = (Pessoa) session.getAttribute("pessoa");
 			request.setAttribute("pessoa", p);
 			request.setAttribute("tituloPagina", "Perfil de " + p.getNomePessoa());
 			request.setAttribute("pathPagina", "/pessoa/ver.jsp");
@@ -75,7 +75,7 @@ public class LoginServlet extends HttpServlet
 		
 		if (p != null && p.getSituacaoPessoa() == 1 && p.getEmail().equals(email))
 		{
-			if(p.getSenha().equals(senha))
+			if (p.getSenha().equals(senha))
 			{
 				session.setAttribute("usuarioAutenticado", "OK");
 				session.setAttribute("pessoa", p);
@@ -90,7 +90,7 @@ public class LoginServlet extends HttpServlet
 			}
 		}
 		
-		if(!sucessoAuth)
+		if (!sucessoAuth)
 		{
 			request.setAttribute("mensagemAlerta", "E-mail ou senha inválido/a!");
 			request.setAttribute("tituloPagina", "Autenticação no Sistema");
@@ -103,5 +103,4 @@ public class LoginServlet extends HttpServlet
 		rd = request.getRequestDispatcher("/template.jsp");
 		rd.forward(request, response);
 	}
-	
 }

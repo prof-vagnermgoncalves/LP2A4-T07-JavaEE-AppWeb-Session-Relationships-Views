@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 
 <!-- Controle simples para evitar acesso direto à página JSP pela URL. -->
 <%
@@ -14,7 +13,8 @@ if(doServidor == null || !doServidor)
 String mensagemAlerta, classeDivAlerta = "";
 mensagemAlerta = (String) request.getAttribute("mensagemAlerta");
 
-if(mensagemAlerta == null) {
+if(mensagemAlerta == null)
+{
 	mensagemAlerta = "";
 	classeDivAlerta = "div-oculta";
 }
@@ -40,19 +40,16 @@ if(mensagemAlerta == null) {
 			<!-- https://getbootstrap.com/docs/4.6/components/forms/ -->
 			<form action="${pageContext.request.contextPath}/login" method="POST">
 				<div class="form-group">
-					<label for="txtEmail">E-mail</label> <input type="email"
-						class="form-control" name="txtEmail" id="txtEmail"
-						required="required">
+					<label for="txtEmail">E-mail</label>
+					<input type="email" class="form-control" name="txtEmail" id="txtEmail" required="required">
 				</div>
 				<div class="form-group">
-					<label for="txtSenha">Senha</label> <input type="password"
-						class="form-control" name="txtSenha" id="txtSenha"
-						required="required">
+					<label for="txtSenha">Senha</label>
+					<input type="password" class="form-control" name="txtSenha" id="txtSenha" required="required">
 				</div>
 				<div class="form-group">
-					<input type="submit" class="btn btn-primary" name="btnEnviar"
-						value="Entrar"> <input class="btn btn-secondary"
-						type="button" name="btnCancelar" value="Voltar"
+					<input type="submit" class="btn btn-primary" name="btnEnviar" value="Entrar">
+					<input class="btn btn-secondary" type="button" name="btnCancelar" value="Voltar"
 						onclick='document.location.href="${pageContext.request.contextPath}/index"'>
 				</div>
 			</form>

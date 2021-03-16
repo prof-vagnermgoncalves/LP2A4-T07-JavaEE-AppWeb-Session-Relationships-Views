@@ -50,9 +50,17 @@ public class ExcluirPessoaServlet extends HttpServlet
 				try
 				{
 					idPessoa = Integer.parseInt(pIdPessoa);
-				} catch (Exception e)
+				}
+				catch (Exception e)
 				{
 					System.out.println("ID de Pessoa inválido!");
+					System.out.println(e.getMessage());
+					System.out.println(e.getStackTrace().toString());
+					
+					for (StackTraceElement ste : e.getStackTrace())
+					{
+						System.out.println(ste.toString());
+					}
 				}
 			}
 			
@@ -64,7 +72,8 @@ public class ExcluirPessoaServlet extends HttpServlet
 			request.setAttribute("tituloPagina", "Confirmar Exclusão de Pessoa");
 			request.setAttribute("pathPagina", "/pessoa/excluir.jsp");
 			request.setAttribute("pessoa", p);
-		} else
+		}
+		else
 		{
 			request.setAttribute("tituloPagina", "Acesso Negado!");
 			request.setAttribute("pathPagina", "/unauthorized.jsp");
@@ -95,9 +104,17 @@ public class ExcluirPessoaServlet extends HttpServlet
 				try
 				{
 					idPessoa = Integer.parseInt(pIdPessoa);
-				} catch (Exception e)
+				}
+				catch (Exception e)
 				{
 					System.out.println("ID de Pessoa inválido!");
+					System.out.println(e.getMessage());
+					System.out.println(e.getStackTrace().toString());
+					
+					for (StackTraceElement ste : e.getStackTrace())
+					{
+						System.out.println(ste.toString());
+					}
 				}
 			}
 			
@@ -132,5 +149,4 @@ public class ExcluirPessoaServlet extends HttpServlet
 		
 		rd.forward(request, response);
 	}
-	
 }

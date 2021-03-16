@@ -1,10 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+
+<%@page import="java.util.HashSet"%>
 <%@page import="java.util.Iterator"%>
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+<%@page import="java.util.Set"%>
 
 <%@page import="model.Pessoa"%>
-<%@page import="java.util.HashSet"%>
-<%@page import="java.util.Set"%>
 
 <!-- Controle simples para evitar acesso direto à página JSP pela URL. -->
 <%
@@ -17,6 +17,10 @@ if(doServidor == null || !doServidor)
 <!-- Atribuições e validações iniciais. -->
 <%
 Set<Pessoa> pessoas = new HashSet<Pessoa>();
+
+if(request.getAttribute("pessoasCadastradas") != null)
+	pessoas = (Set<Pessoa>) request.getAttribute("pessoasCadastradas");
+
 String mensagemAlerta, classeDivAlerta = "";
 mensagemAlerta = (String) request.getAttribute("mensagemAlerta");
 
@@ -58,15 +62,11 @@ if(mensagemAlerta == null) {
 				role="button">Cadastrar Nova Pessoa</a>
 		</div>
 	</div>
-
 	<%
 	int i = 0, j = 0;
 	Pessoa p;
 	
-	if(request.getAttribute("pessoasCadastradas") != null)
-		pessoas = (Set<Pessoa>) request.getAttribute("pessoasCadastradas");
-	
-	Iterator it = pessoas.iterator();
+	Iterator<Pessoa> it = pessoas.iterator();
 	
 	while(i < pessoas.size())
 	{
@@ -122,7 +122,5 @@ if(mensagemAlerta == null) {
 		
 		out.print("</div>");
 	}
-	
 	%>
-	
 </div>

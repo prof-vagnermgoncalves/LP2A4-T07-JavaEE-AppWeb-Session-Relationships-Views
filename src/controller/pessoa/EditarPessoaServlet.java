@@ -50,9 +50,17 @@ public class EditarPessoaServlet extends HttpServlet
 				try
 				{
 					idPessoa = Integer.parseInt(pIdPessoa);
-				} catch (Exception e)
+				}
+				catch (Exception e)
 				{
 					System.out.println("ID de Pessoa inválido!");
+					System.out.println(e.getMessage());
+					System.out.println(e.getStackTrace().toString());
+					
+					for (StackTraceElement ste : e.getStackTrace())
+					{
+						System.out.println(ste.toString());
+					}
 				}
 			}
 			
@@ -64,7 +72,8 @@ public class EditarPessoaServlet extends HttpServlet
 			request.setAttribute("tituloPagina", "Editar Pessoa");
 			request.setAttribute("pathPagina", "/pessoa/editar.jsp");
 			request.setAttribute("pessoa", p);
-		} else
+		}
+		else
 		{
 			request.setAttribute("tituloPagina", "Acesso Negado!");
 			request.setAttribute("pathPagina", "/unauthorized.jsp");
@@ -99,6 +108,13 @@ public class EditarPessoaServlet extends HttpServlet
 				catch (Exception e)
 				{
 					System.out.println("ID de Pessoa inválido!");
+					System.out.println(e.getMessage());
+					System.out.println(e.getStackTrace().toString());
+					
+					for (StackTraceElement ste : e.getStackTrace())
+					{
+						System.out.println(ste.toString());
+					}
 				}
 			}
 			
@@ -143,5 +159,4 @@ public class EditarPessoaServlet extends HttpServlet
 		
 		rd.forward(request, response);
 	}
-	
 }

@@ -1,8 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 
-<%@page import="model.Pessoa"%>
 <%@page import="model.ContaComum"%>
+<%@page import="model.Pessoa"%>
 
 <%@page import="java.text.NumberFormat"%>
 
@@ -44,13 +43,11 @@ if (mensagemAlerta == null)
 
 <!-- Bootstrap Alerts -->
 <!-- https://getbootstrap.com/docs/4.6/components/alerts/ -->
-<div
-	class="alert alert-primary alert-dismissible fade show <%=classeDivAlerta%>"
+<div class="alert alert-primary alert-dismissible fade show <%=classeDivAlerta%>"
 	role="alert">
 	<h4 class="alert-heading">Feito!</h4>
 	<%=mensagemAlerta%>
-	<button type="button" class="close" data-dismiss="alert"
-		aria-label="Close">
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 		<span aria-hidden="true">&times;</span>
 	</button>
 </div>
@@ -73,7 +70,6 @@ if (mensagemAlerta == null)
 	<div class="row mt-3">
 		<div class="col-xl-12">
 			<!-- https://mdbootstrap.com/docs/b4/jquery/tables/search/ -->
-
 			<table id="dtContasComuns"
 				class="table table-striped table-bordered table-sm" cellspacing="0"
 				width="100%">
@@ -90,19 +86,17 @@ if (mensagemAlerta == null)
 				</thead>
 				<tbody>
 					<%
-
 					for (ContaComum c : contas)
 					{
-						
 						out.println("<tr>"); // Linha
-						
 						out.println("<td>" + c.getNumeroConta() + "</td>");
-						
 						
 						nomesTitulares = "";
 						
-						if(c.getPessoas() != null) {
-							for(Pessoa p: c.getPessoas()) {
+						if(c.getPessoas() != null)
+						{
+							for(Pessoa p: c.getPessoas())
+							{
 								nomesTitulares += " / ";
 								nomesTitulares += p.getNomePessoa();
 							}
@@ -110,7 +104,6 @@ if (mensagemAlerta == null)
 						
 						if(nomesTitulares.length() > 3)
 							nomesTitulares = nomesTitulares.substring(3, nomesTitulares.length());
-						
 						
 						out.println("<td>" + nomesTitulares + "</td>");
 						out.println("<td>" + df.format(c.getAberturaConta().getTime()) + "</td>");
@@ -148,7 +141,6 @@ if (mensagemAlerta == null)
 						out.println("</td>");
 						
 						out.println("</tr>"); // Fim Linha
-						
 					}
 					%>
 				</tbody>

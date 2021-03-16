@@ -8,7 +8,6 @@ import java.util.stream.Stream;
 import javax.persistence.EntityTransaction;
 
 import model.ContaComum;
-import model.Pessoa;
 
 public class ContaComumRepository extends PersistenceConfig
 {

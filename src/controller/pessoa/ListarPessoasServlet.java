@@ -17,8 +17,7 @@ import model.repository.PessoaRepository;
 /**
  * Servlet implementation class PessoaServlet
  */
-@WebServlet(
-{ "/pessoa", "/pessoa/listar" })
+@WebServlet({ "/pessoa", "/pessoa/listar" })
 public class ListarPessoasServlet extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
@@ -43,19 +42,17 @@ public class ListarPessoasServlet extends HttpServlet
 		if ("OK".equals(session.getAttribute("usuarioAutenticado")))
 		{
 			int view = 1;
-			String viewStr = (String)request.getParameter("view");
+			String viewStr = (String) request.getParameter("view");
 			
-			System.out.print("PARAMETRO " + viewStr);
-			
-			if("2".equals(viewStr))
-				view = Integer.parseInt(viewStr);
+			if ("2".equals(viewStr))
+				view = Integer.parseInt(viewStr); // view = 2;
 			
 			Set<Pessoa> pessoas = PessoaRepository.recuperarPessoas();
 			
 			request.setAttribute("pessoasCadastradas", pessoas);
 			request.setAttribute("tituloPagina", "Cadastro de Pessoas");
 			
-			if(view == 1)
+			if (view == 1)
 				request.setAttribute("pathPagina", "/pessoa/listar.jsp");
 			else
 				request.setAttribute("pathPagina", "/pessoa/listar2.jsp");
@@ -72,5 +69,4 @@ public class ListarPessoasServlet extends HttpServlet
 		
 		rd.forward(request, response);
 	}
-	
 }

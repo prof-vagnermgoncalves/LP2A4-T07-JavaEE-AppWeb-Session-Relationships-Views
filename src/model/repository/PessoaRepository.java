@@ -105,6 +105,33 @@ public class PessoaRepository extends PersistenceConfig
 		return resultado;
 	}
 	
+
+	
+	@SuppressWarnings("unchecked")
+	public static Set<Pessoa> recuperarPessoasPorStatus(int status)
+	{
+		Set<Pessoa> resultado = null;
+		
+		try
+		{
+			// HQL: FROM Pessoa WHERE situacaoPessoa = ?
+			Stream<Pessoa> pessoasStream = getEntityManager()
+					.createQuery("FROM " + Pessoa.class.getName() + " WHERE situacaoPessoa = :status")
+					.setParameter("status", status)
+					.getResultStream();
+			
+			resultado = pessoasStream
+			  .sorted(Comparator.comparing(Pessoa::getNomePessoa)) //comparator - how you want to sort it
+			  .collect(Collectors.toSet());
+		} catch (Exception e)
+		{
+			System.out.println("Erro ao tentar recuperar as pessoas cadastradas! " + e.getMessage());
+			e.printStackTrace();
+		}
+		
+		return resultado;
+	}
+	
 	public static boolean atualizarPessoa(Pessoa pessoa)
 	{
 		boolean resultado = true;
